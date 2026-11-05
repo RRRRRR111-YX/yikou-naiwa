@@ -1,0 +1,11 @@
+.creative-design/
+.workbuddy/
+.trae-html-share-packages/
+__pycache__/
+node_modules/
+*.log
+.DS_Store
+*.docx
+*.doc
+~$*
+*.pyc

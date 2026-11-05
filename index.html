@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一口奶蛙 · 治愈系解压杂货铺</title>
+<meta name="description" content="一口奶蛙：吧唧、捏捏、手办、抱枕、小夜灯，把柔软和解压一起带回家。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23F3C64B'/%3E%3Ctext x='16' y='22' font-size='16' text-anchor='middle' fill='%2346321B'%3E蛙%3C/text%3E%3C/svg%3E">
+<style>
+/* =========================================================
+   【可修改】主题变量
+   ========================================================= */
+:root{
+  --cream:      #FDF6EC;   /* 页面底色 · 米白 */
+  --cream-deep: #F7EBD9;   /* 次级底色 */
+  --soft:       #FFFBF4;   /* 浅色区块 */
+  --paper:      #FFFFFF;   /* 卡片白 */
+  --butter:     #F3C64B;   /* 主色 · 奶黄 */
+  --butter-deep:#DDA92F;
+  --butter-soft:#FFF3D6;
+  --mint:       #A8D5BA;   /* 辅助色 · 浅绿 */
+  --mint-deep:  #5C8F71;
+  --cocoa:      #3E3026;   /* 主文字 */
+  --cocoa-soft: #8B7563;   /* 次要文字 */
+  --sale:       #E0572B;   /* 价格 / 促销红 */
+  --sale-soft:  #FFF0E8;
+  --line:       rgba(62,48,38,.12);
+  --shadow-sm:  0 4px 14px rgba(62,48,38,.06);
+  --shadow-md:  0 14px 34px rgba(62,48,38,.12);
+  --r-lg:18px; --r-md:14px; --r-sm:10px;
+  --font-display:"YouYuan","幼圆","Yuanti SC","PingFang SC","Microsoft YaHei",sans-serif;
+  --font-body:-apple-system,"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:var(--font-body);font-size:14px;line-height:1.6;
+  color:var(--cocoa);background:var(--cream);-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+ul{list-style:none;margin:0;padding:0}
+section[id]{scroll-margin-top:140px}
+:focus-visible{outline:2px solid var(--butter-deep);outline-offset:2px}
+
+.container{width:min(1200px, calc(100% - 40px));margin:0 auto}
+
+/* ---------- 通用按钮 ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  border:0;cursor:pointer;border-radius:999px;font-size:13px;font-weight:600;
+  padding:10px 20px;transition:transform .18s, box-shadow .18s, background .18s, color .18s;
+}
+.btn-primary{background:var(--butter);color:#3B2C1E;box-shadow:0 8px 18px rgba(243,198,75,.4)}
+.btn-primary:hover{background:#FFD352;transform:translateY(-2px);box-shadow:0 12px 22px rgba(243,198,75,.48)}
+.btn-sale{background:var(--sale);color:#fff;box-shadow:0 8px 18px rgba(224,87,43,.28)}
+.btn-sale:hover{background:#F0653A;transform:translateY(-2px)}
+.btn-line{background:#fff;border:1px solid var(--line);color:var(--cocoa)}
+.btn-line:hover{border-color:var(--butter);color:#B8862A}
+
+/* =========================================================
+   1. 顶部信息条
+   ========================================================= */
+.topbar{background:#F4E8D6;border-bottom:1px solid rgba(62,48,38,.08);font-size:12px;color:#7A6450}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;height:32px}
+.topbar-left,.topbar-right{display:flex;align-items:center;gap:16px}
+.topbar a{opacity:.85;transition:opacity .2s,color .2s}
+.topbar a:hover{opacity:1;color:#B8862A}
+.topbar .login{color:#B8862A;font-weight:600}
+.topbar .divider{width:1px;height:12px;background:rgba(62,48,38,.16)}
+
+/* =========================================================
+   2. 主头部：Logo + 搜索 + 购物车
+   ========================================================= */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(253,248,240,.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.header-main{display:flex;align-items:center;gap:34px;padding:16px 0 14px}
+.brand{display:flex;align-items:center;gap:10px;flex:none}
+.brand-mark{
+  width:52px;height:52px;border-radius:14px;flex:none;overflow:hidden;
+  box-shadow:0 6px 14px rgba(243,198,75,.42);
+}
+.brand-mark img{width:100%;height:100%;object-fit:cover}
+.brand-text{display:flex;flex-direction:column;line-height:1.12}
+.brand-name{font-family:var(--font-display);font-size:1.2rem;letter-spacing:.06em}
+.brand-sub{font-size:11px;letter-spacing:.2em;color:var(--cocoa-soft)}
+
+.search-col{flex:1;max-width:640px}
+.search-form{
+  display:flex;align-items:center;height:44px;background:#fff;
+  border:2px solid var(--butter);border-radius:999px;overflow:hidden;
+  transition:box-shadow .2s;
+}
+.search-form:focus-within{box-shadow:0 0 0 4px rgba(243,198,75,.22)}
+.search-form svg{width:17px;height:17px;flex:none;margin-left:16px;opacity:.4}
+.search-form input{flex:1;min-width:0;border:0;outline:none;background:transparent;font:inherit;font-size:13px;padding:0 12px;color:var(--cocoa)}
+.search-form button{
+  flex:none;height:100%;padding:0 26px;border:0;cursor:pointer;
+  background:var(--butter);color:#3B2C1E;font-weight:600;font-size:14px;letter-spacing:.08em;
+  transition:background .2s;
+}
+.search-form button:hover{background:#FFD352}
+.hot-words{display:flex;gap:14px;font-size:12px;color:var(--cocoa-soft);margin-top:8px;padding-left:18px}
+.hot-words a:hover{color:#B8862A}
+
+.header-actions{display:flex;align-items:center;gap:22px;flex:none}
+.header-link{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--cocoa-soft);transition:color .2s}
+.header-link svg{width:16px;height:16px}
+.header-link:hover{color:#B8862A}
+.cart-box{
+  position:relative;display:flex;align-items:center;gap:10px;height:44px;
+  padding:0 18px;border-radius:999px;background:#fff;border:1px solid var(--line);
+  cursor:pointer;transition:border-color .2s, box-shadow .2s;
+}
+.cart-box:hover{border-color:var(--butter);box-shadow:var(--shadow-sm)}
+.cart-box svg{width:20px;height:20px;color:#B8862A}
+.cart-box-text{display:flex;flex-direction:column;line-height:1.2}
+.cart-box-text span:first-child{font-size:12.5px}
+.cart-box-text span:last-child{font-size:11px;color:var(--sale);font-weight:700}
+.cart-badge{
+  position:absolute;top:-6px;right:6px;min-width:19px;height:19px;padding:0 5px;
+  border-radius:999px;background:var(--sale);color:#fff;font-size:11px;
+  line-height:19px;text-align:center;font-weight:700;
+}
+.cart-badge[hidden]{display:none}
+
+.header-nav{border-top:1px solid rgba(62,48,38,.06);padding:9px 0}
+.nav-row{display:flex;align-items:center;gap:8px}
+.menu-btn{display:none;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:#fff;cursor:pointer;padding:0;place-items:center}
+.menu-btn span{display:block;width:16px;height:2px;background:var(--cocoa);margin:3px auto;border-radius:2px}
+.cat-btn{
+  display:flex;align-items:center;gap:8px;height:38px;padding:0 18px;border:0;cursor:pointer;
+  border-radius:10px;background:var(--butter);color:#3B2C1E;font-weight:700;font-size:13.5px;
+  letter-spacing:.04em;box-shadow:0 6px 14px rgba(243,198,75,.35);
+}
+.cat-btn svg{width:15px;height:15px}
+.nav-links{display:flex;align-items:center;gap:4px;font-size:13.5px;margin-left:8px}
+.nav-links a{padding:6px 14px;border-radius:999px;color:var(--cocoa);transition:background .2s,color .2s}
+.nav-links a:hover{background:var(--butter-soft);color:#B8862A}
+.nav-links .hot{position:relative;color:#B8862A}
+.nav-links .hot::after{
+  content:"HOT";position:absolute;top:-6px;right:-2px;font-size:9px;font-weight:700;
+  color:#fff;background:var(--sale);padding:0 4px;border-radius:3px;letter-spacing:0;
+}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:16px;font-size:12.5px;color:var(--cocoa-soft)}
+
+/* =========================================================
+   3. 首屏：分类 + 轮播 + 活动位
+   ========================================================= */
+.hero-grid{
+  display:grid;grid-template-columns:196px minmax(0,1fr) 248px;gap:12px;
+  margin-top:14px;
+}
+.cat-panel{background:#fff;border-radius:var(--r-lg);border:1px solid rgba(62,48,38,.06);padding:12px 0;box-shadow:var(--shadow-sm)}
+.cat-panel h3{margin:0 16px 8px;font-size:12px;font-weight:600;letter-spacing:.14em;color:var(--cocoa-soft)}
+.cat-list a{
+  display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:13px;
+  color:var(--cocoa);transition:background .18s,color .18s;
+}
+.cat-list a:hover{background:var(--butter-soft);color:#A8741C}
+.cat-list a span.dot{width:6px;height:6px;border-radius:50%;background:var(--butter);flex:none}
+.cat-list a small{margin-left:auto;font-size:10px;color:#fff;background:var(--sale);padding:1px 5px;border-radius:4px}
+
+/* ---------- 轮播（16:9 横图比例） ---------- */
+.hero-frame{
+  position:relative;aspect-ratio:16/9;border-radius:var(--r-lg);overflow:hidden;
+  box-shadow:var(--shadow-md);background:#EFE3D0;
+}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
+.hero-slide.is-active{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.07);transition:transform 7s linear}
+.hero-slide.is-active img{transform:scale(1)}
+.hero-slide::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(253,246,236,.97) 0%,rgba(253,246,236,.90) 32%,
+    rgba(253,246,236,.45) 60%,rgba(253,246,236,.04) 100%);
+}
+.hero-copy{position:absolute;z-index:2;left:clamp(24px,5%,56px);top:50%;transform:translateY(-50%);max-width:430px}
+.eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--butter-deep);font-weight:700}
+.hero-copy h1{
+  font-family:var(--font-display);font-weight:400;font-size:clamp(1.9rem,3.4vw,2.9rem);
+  line-height:1.24;margin:12px 0 14px;
+}
+.hero-copy p{margin:0 0 22px;color:var(--cocoa-soft);font-size:13.5px;max-width:24em}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.hero-ctrl{position:absolute;z-index:3;right:24px;bottom:20px;display:flex;align-items:center;gap:12px}
+.dots{display:flex;gap:7px}
+.dot{width:8px;height:8px;border-radius:50%;border:0;padding:0;cursor:pointer;background:rgba(62,48,38,.25);transition:all .3s}
+.dot.is-active{width:22px;border-radius:999px;background:var(--butter-deep)}
+.arrows{display:flex;gap:6px}
+.arrow{
+  width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:13px;
+  border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.78);color:var(--cocoa);
+  display:grid;place-items:center;transition:background .2s,transform .2s;
+}
+.arrow:hover{background:#fff;transform:translateY(-2px)}
+
+/* ---------- 右侧活动位 ---------- */
+.promo-stack{display:grid;grid-template-rows:repeat(3,1fr);gap:12px}
+.promo-card{
+  position:relative;overflow:hidden;border-radius:var(--r-md);
+  padding:16px 18px;display:flex;flex-direction:column;justify-content:center;
+  box-shadow:var(--shadow-sm);transition:transform .25s, box-shadow .25s;
+}
+.promo-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.promo-card b{font-family:var(--font-display);font-size:1.15rem;font-weight:400;letter-spacing:.02em}
+.promo-card p{margin:4px 0 10px;font-size:12px;opacity:.8}
+.promo-card span.link{font-size:11.5px;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.promo-card.is-butter{background:linear-gradient(120deg,#FFE9AE,#F7CE66);color:#5A3E10}
+.promo-card.is-mint{background:linear-gradient(120deg,#D5EEDD,#A8D5BA);color:#2D4E3B}
+.promo-card.is-photo{padding:0;color:#fff}
+.promo-card.is-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.promo-card.is-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(46,32,22,.78),rgba(46,32,22,.1) 70%)}
+.promo-card.is-photo .inner{position:relative;z-index:1;padding:16px 18px;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+
+/* =========================================================
+   4. 频道入口（金刚区）
+   ========================================================= */
+.channel-grid{
+  display:grid;grid-template-columns:repeat(8,1fr);gap:10px;
+  margin-top:16px;padding:18px 14px;background:#fff;border-radius:var(--r-lg);
+  border:1px solid rgba(62,48,38,.06);box-shadow:var(--shadow-sm);
+}
+.channel{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:12.5px;color:var(--cocoa);transition:transform .2s}
+.channel:hover{transform:translateY(-3px)}
+.channel .ico{
+  width:50px;height:50px;border-radius:16px;display:grid;place-items:center;
+  background:var(--soft);border:1px solid rgba(62,48,38,.06);
+}
+.channel .ico svg{width:22px;height:22px;color:#B8862A}
+.channel:nth-child(2) .ico{background:var(--sale-soft)}
+.channel:nth-child(2) .ico svg{color:var(--sale)}
+.channel:nth-child(3) .ico{background:#EDF7F1}
+.channel:nth-child(3) .ico svg{color:var(--mint-deep)}
+
+/* =========================================================
+   5. 限时秒杀
+   ========================================================= */
+.section{margin-top:20px}
+.panel{background:#fff;border-radius:var(--r-lg);border:1px solid rgba(62,48,38,.06);box-shadow:var(--shadow-sm)}
+.flash-head{display:flex;align-items:center;gap:14px;padding:18px 20px 14px;flex-wrap:wrap}
+.flash-title{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:1.15rem;letter-spacing:.04em}
+.flash-title .flame{
+  width:24px;height:24px;border-radius:8px;background:var(--sale);color:#fff;
+  display:grid;place-items:center;font-size:12px;font-family:var(--font-body);
+}
+.countdown{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--cocoa-soft)}
+.countdown b{
+  display:inline-grid;place-items:center;min-width:26px;height:24px;padding:0 4px;
+  border-radius:5px;background:#3E3026;color:#fff;font-size:12.5px;letter-spacing:.06em;
+}
+.flash-more{margin-left:auto;font-size:12.5px;color:var(--cocoa-soft)}
+.flash-more:hover{color:#B8862A}
+.flash-list{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(62,48,38,.06)}
+.flash-item{display:flex;gap:12px;padding:16px 18px;position:relative;transition:background .2s}
+.flash-item:hover{background:var(--soft)}
+.flash-item+.flash-item::before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:1px;background:rgba(62,48,38,.07)}
+.flash-item img{width:92px;height:92px;border-radius:10px;object-fit:cover;flex:none}
+.flash-info{display:flex;flex-direction:column;gap:5px;min-width:0}
+.flash-info h4{margin:0;font-family:var(--font-display);font-weight:400;font-size:13.5px;line-height:1.35;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.flash-price{display:flex;align-items:baseline;gap:6px}
+.flash-price .now{color:var(--sale);font-weight:700;font-size:17px}
+.flash-price .now small{font-size:11px;margin-right:1px}
+.flash-price .old{color:#A99683;font-size:11.5px;text-decoration:line-through}
+.bar{height:11px;border-radius:999px;background:#F3EADB;overflow:hidden;position:relative}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#FFB48A,#E0572B);border-radius:999px}
+.bar span{position:absolute;inset:0;font-size:10px;line-height:11px;text-align:center;color:#fff;font-style:normal}
+
+/* =========================================================
+   6. 领券中心
+   ========================================================= */
+.coupon-row{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:12px;margin-top:20px}
+.coupon{
+  position:relative;display:flex;align-items:center;gap:14px;
+  background:linear-gradient(115deg,#FFF3D6,#FFE6B2);
+  border-radius:var(--r-md);padding:16px 18px;overflow:hidden;
+  border:1px dashed rgba(196,130,30,.35);
+}
+.coupon::before,.coupon::after{
+  content:"";position:absolute;width:14px;height:14px;border-radius:50%;background:var(--cream);
+  right:86px;top:-7px;
+}
+.coupon::after{top:auto;bottom:-7px}
+.coupon .val{font-family:var(--font-display);color:#B36D12;line-height:1}
+.coupon .val b{font-size:2rem;font-weight:400}
+.coupon .val small{font-size:12px;margin-right:2px}
+.coupon .meta{display:flex;flex-direction:column;gap:2px}
+.coupon .meta strong{font-size:13px}
+.coupon .meta span{font-size:11.5px;color:#8A6528}
+.coupon button{
+  margin-left:auto;border:0;cursor:pointer;border-radius:999px;
+  background:#fff;color:#B36D12;font-size:12px;font-weight:700;padding:7px 16px;
+  box-shadow:0 4px 10px rgba(196,130,30,.18);transition:transform .2s;
+}
+.coupon button:hover{transform:translateY(-2px)}
+.coupon-more{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  padding:12px 18px;border-radius:var(--r-md);background:#fff;border:1px solid var(--line);
+  font-size:12.5px;color:var(--cocoa-soft);transition:border-color .2s,color .2s;
+}
+.coupon-more:hover{border-color:var(--butter);color:#B8862A}
+.coupon-more b{font-size:14px;color:var(--cocoa);font-family:var(--font-display);font-weight:400}
+
+/* =========================================================
+   7. 商品区（4:3 比例）
+   ========================================================= */
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:14px;padding:0 2px}
+.section-title{font-family:var(--font-display);font-weight:400;font-size:1.7rem;margin:8px 0 0;letter-spacing:.02em}
+.section-title small{font-family:var(--font-body);font-size:12px;color:var(--cocoa-soft);letter-spacing:.04em;margin-left:8px}
+.tabs{display:flex;gap:4px;padding:4px;background:#fff;border-radius:999px;border:1px solid var(--line)}
+.tab{border:0;background:transparent;cursor:pointer;font-size:12.5px;color:var(--cocoa-soft);padding:7px 16px;border-radius:999px;transition:.2s}
+.tab:hover{color:var(--cocoa)}
+.tab.is-active{background:var(--butter);color:#3B2C1E;font-weight:600}
+
+.product-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:14px}
+.product-card{
+  display:flex;flex-direction:column;background:#fff;border-radius:var(--r-md);
+  border:1px solid rgba(62,48,38,.06);overflow:hidden;box-shadow:var(--shadow-sm);
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s;
+}
+.product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:rgba(243,198,75,.6)}
+.product-media{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:var(--cream-deep)}
+.product-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.product-card:hover .product-media img{transform:scale(1.06)}
+.product-tag{
+  position:absolute;top:10px;left:10px;padding:3px 9px;border-radius:5px;
+  font-size:11px;background:rgba(62,48,38,.82);color:#fff;letter-spacing:.06em;
+}
+.product-tag.is-sale{background:var(--sale)}
+.product-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.product-body h3{
+  font-family:var(--font-display);font-weight:400;font-size:14px;margin:0;line-height:1.45;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.9em;
+}
+.product-desc{margin:0;color:var(--cocoa-soft);font-size:11.5px;line-height:1.5;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chips{display:flex;gap:4px;flex-wrap:wrap}
+.chip{font-size:10.5px;padding:1px 6px;border-radius:4px;border:1px solid rgba(224,87,43,.35);color:var(--sale);background:var(--sale-soft)}
+.chip.gray{border-color:var(--line);color:var(--cocoa-soft);background:#FAF6EF}
+.product-foot{margin-top:auto;padding-top:8px;display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
+.price{display:flex;align-items:baseline;gap:5px;color:var(--sale);font-weight:700}
+.price b{font-size:19px;line-height:1}
+.price small{font-size:11px;font-weight:600}
+.price del{color:#A99683;font-size:11px;font-weight:400}
+.sales{font-size:11px;color:var(--cocoa-soft);white-space:nowrap}
+.add-btn{
+  border:0;cursor:pointer;border-radius:999px;background:var(--butter);color:#3B2C1E;
+  font-size:11.5px;font-weight:700;padding:7px 12px;transition:background .2s,transform .2s;
+}
+.add-btn:hover{background:#FFD352;transform:translateY(-2px)}
+.add-btn:active{transform:scale(.95)}
+.empty{grid-column:1/-1;text-align:center;padding:56px 0;color:var(--cocoa-soft)}
+
+/* =========================================================
+   8. 排行榜
+   ========================================================= */
+.rank-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rank-panel{background:#fff;border-radius:var(--r-lg);border:1px solid rgba(62,48,38,.06);padding:18px 20px;box-shadow:var(--shadow-sm)}
+.rank-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.rank-head h3{margin:0;font-family:var(--font-display);font-weight:400;font-size:15px;letter-spacing:.06em}
+.rank-head span{font-size:11px;color:var(--cocoa-soft)}
+.rank-item{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(62,48,38,.08);transition:background .2s}
+.rank-item:last-child{border-bottom:0}
+.rank-no{width:22px;flex:none;text-align:center;font-family:var(--font-display);font-size:14px;color:#A99683}
+.rank-item:nth-child(2) .rank-no{color:#E0572B}
+.rank-item:nth-child(3) .rank-no{color:#DDA92F}
+.rank-item:nth-child(4) .rank-no{color:#5C8F71}
+.rank-item img{width:48px;height:48px;border-radius:8px;object-fit:cover;flex:none}
+.rank-name{flex:1;min-width:0}
+.rank-name strong{display:block;font-size:12.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank-name small{font-size:11px;color:var(--cocoa-soft)}
+.rank-price{font-size:12.5px;color:var(--sale);font-weight:700}
+
+/* =========================================================
+   9. 品牌故事（16:9 比例）
+   ========================================================= */
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;
+  background:#fff;border-radius:var(--r-lg);border:1px solid rgba(62,48,38,.06);
+  padding:clamp(20px,3vw,34px);box-shadow:var(--shadow-sm)}
+.story-media{aspect-ratio:16/9;overflow:hidden;border-radius:16px;background:var(--cream-deep)}
+.story-media img{width:100%;height:100%;object-fit:cover}
+.story-copy h2{font-family:var(--font-display);font-weight:400;font-size:clamp(1.5rem,2.3vw,1.9rem);margin:8px 0 14px;line-height:1.35}
+.story-copy p{color:var(--cocoa-soft);font-size:13px;margin:0 0 10px}
+.stats{display:flex;gap:30px;margin-top:20px;flex-wrap:wrap}
+.stat strong{font-family:var(--font-display);font-weight:400;font-size:1.5rem;color:#C4821E;display:block;line-height:1.1}
+.stat span{font-size:11px;letter-spacing:.06em;color:var(--cocoa-soft)}
+
+/* =========================================================
+   10. 服务保障 + 页脚
+   ========================================================= */
+.service-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.service{
+  display:flex;align-items:center;gap:12px;background:#fff;border-radius:var(--r-md);
+  border:1px solid rgba(62,48,38,.06);padding:16px 20px;box-shadow:var(--shadow-sm);
+}
+.service .ico{width:38px;height:38px;border-radius:50%;background:var(--butter-soft);display:grid;place-items:center;flex:none}
+.service .ico svg{width:18px;height:18px;color:#B8862A}
+.service strong{display:block;font-size:13px;font-weight:600}
+.service small{font-size:11px;color:var(--cocoa-soft)}
+
+.footer{margin-top:40px;background:#3E3026;color:#F7EBD9;padding-top:46px}
+.footer-top{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:32px;padding-bottom:36px}
+.footer-brand .brand{gap:10px;color:#F7EBD9}
+.footer-brand .brand-mark{background:var(--butter)}
+.footer-brand .brand-name{color:#F7EBD9}
+.footer-brand .brand-sub{color:rgba(247,235,217,.55)}
+.footer-brand p{color:rgba(247,235,217,.66);font-size:12px;margin:14px 0 0;line-height:1.8}
+.footer h4{margin:0 0 14px;font-family:var(--font-display);font-weight:400;font-size:13px;letter-spacing:.18em;color:#FFE1A0}
+.footer-col{display:flex;flex-direction:column;gap:9px;font-size:12px}
+.footer-col a{color:rgba(247,235,217,.68);transition:color .2s}
+.footer-col a:hover{color:#FFE1A0}
+.footer-col span{color:rgba(247,235,217,.5);font-size:11.5px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:16px 0 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;color:rgba(247,235,217,.5)}
+.pay{display:flex;gap:8px}
+.pay span{padding:3px 10px;border-radius:5px;border:1px solid rgba(255,255,255,.16);font-size:11px}
+
+/* ---------- 帮助中心 FAQ ---------- */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.faq-grid details{
+  background:#fff;border:1px solid rgba(62,48,38,.06);border-radius:12px;
+  padding:0 18px;box-shadow:var(--shadow-sm);scroll-margin-top:150px;
+}
+.faq-grid summary{
+  cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 0;font-size:13px;font-weight:600;color:var(--cocoa);
+}
+.faq-grid summary::-webkit-details-marker{display:none}
+.faq-grid summary::after{content:"+";color:var(--butter-deep);font-size:16px;transition:transform .2s}
+.faq-grid details[open] summary::after{transform:rotate(45deg)}
+.faq-grid details p{margin:0 0 14px;font-size:12.5px;color:var(--cocoa-soft);line-height:1.8}
+
+/* =========================================================
+   11. 悬浮工具 / 提示 / 迷你购物车
+   ========================================================= */
+.float-tools{position:fixed;right:18px;bottom:96px;z-index:70;display:flex;flex-direction:column;gap:10px}
+.tool{
+  width:46px;height:46px;border-radius:14px;background:#fff;border:1px solid var(--line);
+  display:grid;place-items:center;cursor:pointer;box-shadow:var(--shadow-sm);position:relative;
+  transition:border-color .2s,transform .2s;
+}
+.tool:hover{border-color:var(--butter);transform:translateY(-2px)}
+.tool svg{width:19px;height:19px;color:var(--cocoa-soft)}
+.tool .tip{
+  position:absolute;right:56px;top:50%;transform:translateY(-50%);
+  background:#3E3026;color:#fff;font-size:11.5px;padding:5px 10px;border-radius:6px;
+  white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;
+}
+.tool:hover .tip{opacity:1}
+.tool .cart-badge{top:-5px;right:-5px}
+
+.mini-cart{
+  position:fixed;top:150px;right:max(18px,calc((100vw - 1200px)/2));z-index:80;width:330px;
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-md);
+  padding:18px;opacity:0;transform:translateY(-10px);pointer-events:none;transition:.25s;
+}
+.mini-cart.is-open{opacity:1;transform:none;pointer-events:auto}
+.mini-cart h4{margin:0 0 12px;font-family:var(--font-display);font-weight:400;font-size:14px;letter-spacing:.1em}
+.cart-list{display:flex;flex-direction:column;gap:12px;max-height:250px;overflow:auto}
+.cart-item{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px}
+.cart-item strong{font-weight:500}
+.cart-item small{display:block;color:var(--cocoa-soft);font-size:11px}
+.cart-remove{border:0;background:transparent;color:var(--cocoa-soft);cursor:pointer;padding:2px 6px;border-radius:6px;font-size:14px}
+.cart-remove:hover{color:var(--sale)}
+.cart-empty{color:var(--cocoa-soft);font-size:12.5px;padding:6px 0}
+.cart-total{display:flex;align-items:center;justify-content:space-between;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:12.5px}
+.cart-total strong{font-family:var(--font-display);font-size:1.15rem;color:var(--sale)}
+.cart-actions{margin-top:12px}
+.cart-actions .btn{width:100%}
+
+.toast{
+  position:fixed;left:50%;bottom:40px;z-index:120;transform:translate(-50%,16px);opacity:0;
+  pointer-events:none;background:#3E3026;color:#FFF6E4;font-size:12.5px;
+  padding:11px 22px;border-radius:999px;box-shadow:0 12px 30px rgba(0,0,0,.22);
+  transition:opacity .28s,transform .28s;
+}
+.toast.is-show{opacity:1;transform:translate(-50%,0)}
+
+/* ---------- 分类下拉 ---------- */
+.cat-wrap{position:relative}
+.cat-drop{
+  position:absolute;top:46px;left:0;width:224px;z-index:120;
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow-md);padding:6px;display:none;
+}
+.cat-wrap.is-open .cat-drop{display:block}
+.cat-drop a{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-radius:8px;font-size:13px;color:var(--cocoa);transition:background .18s,color .18s}
+.cat-drop a:hover{background:var(--butter-soft);color:#A8741C}
+.cat-drop a small{font-size:10px;color:#fff;background:var(--sale);padding:1px 5px;border-radius:4px}
+.cat-drop .cat-all{color:#A8741C;font-weight:600;border-bottom:1px dashed rgba(62,48,38,.1);border-radius:0;margin-bottom:4px}
+.cat-btn .caret{width:11px;height:11px;transition:transform .2s}
+.cat-wrap.is-open .cat-btn .caret{transform:rotate(180deg)}
+
+/* ---------- 页脚社交图标 ---------- */
+.footer-socials{display:flex;gap:10px;margin-top:16px}
+.footer-socials a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:grid;place-items:center;transition:background .2s,transform .2s}
+.footer-socials a:hover{background:var(--butter);transform:translateY(-2px)}
+.footer-socials svg{width:17px;height:17px;stroke:#F7EBD9}
+.footer-socials a:hover svg{stroke:#3E3026}
+
+/* ---------- 弹层（登录 / 确认订单） ---------- */
+.modal{position:fixed;inset:0;z-index:200;display:none}
+.modal.is-open{display:grid;place-items:center}
+.modal-mask{position:absolute;inset:0;background:rgba(46,34,24,.45);backdrop-filter:blur(2px)}
+.modal-box{
+  position:relative;width:min(430px,calc(100vw - 32px));background:#fff;border-radius:16px;
+  padding:24px;box-shadow:0 30px 60px rgba(0,0,0,.25);animation:pop .25s ease;
+}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.modal-close{
+  position:absolute;top:10px;right:12px;width:30px;height:30px;border:0;border-radius:50%;
+  background:#FAF4EA;color:var(--cocoa-soft);cursor:pointer;font-size:16px;line-height:1;
+}
+.modal-box h3{margin:0 0 14px;font-family:var(--font-display);font-weight:400;font-size:17px}
+.addr{background:#FAF4EA;border-radius:10px;padding:10px 14px;font-size:12.5px;color:var(--cocoa-soft);line-height:1.7}
+.order-items{max-height:190px;overflow:auto;margin:12px 0;display:flex;flex-direction:column;gap:10px}
+.order-items div{display:flex;justify-content:space-between;gap:10px;font-size:12.5px}
+.order-sum{display:flex;justify-content:space-between;align-items:center;border-top:1px dashed var(--line);padding-top:12px;font-size:13px}
+.order-sum strong{color:var(--sale);font-family:var(--font-display);font-size:1.2rem}
+.pay-way{display:flex;gap:8px;margin-top:12px}
+.pay-way label{flex:1;text-align:center;border:1px solid var(--line);border-radius:8px;padding:8px 0;font-size:12px;cursor:pointer;transition:.2s}
+.pay-way label:hover{border-color:var(--butter)}
+.pay-way input{margin-right:4px}
+.ok-icon{width:52px;height:52px;margin:6px auto 12px;border-radius:50%;background:var(--mint);color:#2D4E3B;display:grid;place-items:center;font-size:24px}
+.modal-tip{font-size:12px;color:var(--cocoa-soft);margin:0 0 12px}
+.modal-input{width:100%;height:42px;border:1px solid var(--line);border-radius:10px;padding:0 14px;font:inherit;font-size:13px;outline:none;margin-bottom:12px}
+.modal-input:focus{border-color:var(--butter);box-shadow:0 0 0 3px rgba(243,198,75,.2)}
+
+/* ---------- 入场动效 ---------- */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.is-in{opacity:1;transform:none}
+
+/* =========================================================
+   12. 响应式
+   ========================================================= */
+@media (max-width:1080px){
+  .hero-grid{grid-template-columns:180px minmax(0,1fr)}
+  .promo-stack{display:none}
+  .product-grid{grid-template-columns:repeat(4,1fr)}
+  .flash-list{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr 1fr}
+}
+@media (max-width:860px){
+  .topbar{display:none}
+  .header-main{flex-wrap:wrap;gap:14px;padding:12px 0}
+  .brand{order:1}
+  .header-actions{order:2;margin-left:auto;gap:14px}
+  .header-link{display:none}
+  .search-col{order:3;flex-basis:100%;max-width:none}
+  .hero-grid{grid-template-columns:1fr}
+  .cat-panel{display:none}
+  .hero-frame{aspect-ratio:16/10}
+  .channel-grid{grid-template-columns:repeat(4,1fr);row-gap:16px}
+  .coupon-row{grid-template-columns:1fr 1fr}
+  .product-grid{grid-template-columns:repeat(3,1fr)}
+  .rank-grid,.story-grid{grid-template-columns:1fr}
+  .service-bar{grid-template-columns:1fr 1fr}
+  .menu-btn{display:grid;order:0}
+  .nav-links{
+    position:absolute;left:20px;right:20px;top:100%;display:none;flex-direction:column;
+    background:#fff;border:1px solid var(--line);border-radius:var(--r-md);
+    padding:10px;box-shadow:var(--shadow-md);gap:2px;
+  }
+  .nav-links.is-open{display:flex}
+  .nav-links a{width:100%}
+  .nav-right{display:none}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .container{width:calc(100% - 28px)}
+  .brand-sub,.cart-box-text{display:none}
+  .cart-box{padding:0 13px}
+  .hero-frame{aspect-ratio:16/10}
+  .hero-slide::after{background:linear-gradient(0deg,rgba(253,246,236,.97) 0%,rgba(253,246,236,.92) 42%,rgba(253,246,236,.35) 74%,rgba(253,246,236,.05) 100%)}
+  .hero-copy{top:auto;bottom:64px;transform:none;right:20px}
+  .hero-copy h1{font-size:1.85rem}
+  .hero-ctrl{bottom:14px;right:14px}
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .product-body{padding:10px 11px 12px}
+  .flash-list{grid-template-columns:1fr}
+  .flash-item+.flash-item::before{left:18px;right:18px;top:0;bottom:auto;width:auto;height:1px}
+  .coupon-row{grid-template-columns:1fr}
+  .coupon::before,.coupon::after{right:74px}
+  .service-bar{grid-template-columns:1fr}
+  .float-tools{right:10px;bottom:80px;gap:8px}
+  .tool{width:42px;height:42px}
+  .mini-cart{left:12px;right:12px;width:auto;top:130px}
+  .footer-top{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- =================【可修改】顶部信息条 ================= -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-left">
+      <span>送至：广州 · 天河区</span>
+      <span class="divider"></span>
+      <a href="#promo">满 99 包邮 · 新人立减 20</a>
+    </div>
+    <div class="topbar-right">
+      <a href="#contact">我的订单</a>
+      <a href="#contact">我的收藏</a>
+      <span class="divider"></span>
+      <a href="#faq">客户服务</a>
+      <a href="#contact">手机版</a>
+      <span class="divider"></span>
+      <a href="#login" class="login" id="loginBtn">登录</a>
+      <button id="registerBtn">注册</button>
+    </div>
+  </div>
+</div>
+
+<!-- =================【可修改】主头部 ================= -->
+<header class="site-header">
+  <div class="container header-main">
+    <a class="brand" href="#top" aria-label="一口奶蛙 首页">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="images/logo.jpg" alt="一口奶蛙 LOGO">
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">一口奶蛙</span>
+        <span class="brand-sub">CUSTARD GOODS</span>
+      </span>
+    </a>
+
+    <div class="search-col">
+      <form class="search-form" id="searchForm" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <circle cx="11" cy="11" r="6"></circle><path d="M16 16l4 4"></path>
+        </svg>
+        <input id="searchInput" type="search" placeholder="搜索 吧唧 / 捏捏 / 抱枕 / 小夜灯" aria-label="搜索商品">
+        <button type="submit">搜索</button>
+      </form>
+      <div class="hot-words">
+        <span>热搜：</span>
+        <a href="#products">吧唧套装</a>
+        <a href="#products">慢回弹捏捏</a>
+        <a href="#products">云朵抱枕</a>
+        <a href="#products">盲盒福袋</a>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <a class="header-link" href="#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3l3 6 6 .9-4.4 4.3 1 6.1L12 17.6 6.4 20.3l1-6.1L3 9.9l6-.9z"></path></svg>
+        我的收藏
+      </a>
+      <button class="cart-box" id="cartBtn" aria-expanded="false" aria-label="打开购物车">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+          <path d="M4 6h2l2.4 10.2a2 2 0 0 0 2 1.6h7.4a2 2 0 0 0 2-1.6L21 9H7"></path>
+          <circle cx="10" cy="20.5" r="1.2"></circle><circle cx="18" cy="20.5" r="1.2"></circle>
+        </svg>
+        <span class="cart-box-text">
+          <span>购物车</span>
+          <span id="cartPreview">¥0.00</span>
+        </span>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="header-nav">
+    <div class="container nav-row">
+      <button class="menu-btn" id="menuBtn" aria-label="展开菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="cat-wrap" id="catWrap">
+        <button class="cat-btn" id="catBtn" aria-expanded="false" aria-controls="catDrop">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6h7v7H4zM13 6h7v7h-7zM4 15h7v5H4zM13 15h7v5h-7z"></path></svg>
+          全部商品分类
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+        </button>
+        <div class="cat-drop" id="catDrop">
+          <a class="cat-all" href="#products">全部分类 ›</a>
+          <a href="#products">吧唧徽章 <small>新</small></a>
+          <a href="#products">慢回弹捏捏</a>
+          <a href="#products">治愈手办</a>
+          <a href="#products">毛绒抱枕</a>
+          <a href="#products">桌面摆件</a>
+          <a href="#products">等身抱枕</a>
+          <a href="#products">表情包周边</a>
+          <a href="#products">清仓特惠</a>
+        </div>
+      </div>
+      <nav class="nav-links" id="navLinks" aria-label="主导航">
+        <a href="#top">首页</a>
+        <a href="#flash" class="hot">限时秒杀</a>
+        <a href="#products">新品上架</a>
+        <a href="#rank">热销榜单</a>
+        <a href="#story">品牌故事</a>
+        <a href="#contact">联系我们</a>
+      </nav>
+      <div class="nav-right">
+        <span>正品保障 · 7 天无理由</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- =================【可修改】首屏：分类 + 轮播 + 活动位 ================= -->
+<div class="container hero-grid">
+  <aside class="cat-panel">
+    <h3>商品分类</h3>
+    <nav class="cat-list" aria-label="商品分类">
+      <a href="#products"><span class="dot"></span>吧唧徽章</a>
+      <a href="#products"><span class="dot"></span>慢回弹捏捏</a>
+      <a href="#products"><span class="dot"></span>治愈手办</a>
+      <a href="#products"><span class="dot"></span>毛绒抱枕</a>
+      <a href="#products"><span class="dot"></span>桌面摆件</a>
+      <a href="#products"><span class="dot"></span>等身抱枕<small>新</small></a>
+      <a href="#products"><span class="dot"></span>表情包周边</a>
+      <a href="#products"><span class="dot"></span>清仓特惠<small>清</small></a>
+    </nav>
+  </aside>
+
+  <div class="hero-frame" id="heroFrame">
+    <article class="hero-slide is-active">
+      <img src="商品图片/3009dc75e65d699e3ad1f9726a338fcd.jpg" alt="桌面上的悬浮奶黄蛙手办">
+      <div class="hero-copy">
+        <span class="eyebrow">NEW SEASON · 2026</span>
+        <h1>把一整个<br>软乎乎的下午</h1>
+        <p>奶黄色的抱枕、吧唧和捏捏，装进你的桌面和背包。新客进店立减 20 元。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#products">去逛杂货铺</a>
+          <a class="btn btn-line" href="#story">我们的故事</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="hero-slide">
+      <img src="商品图片/1aae733e34603d3dfdf3c6ecd54b328d.jpg" alt="眯眼奶黄团捏捏">
+      <div class="hero-copy">
+        <span class="eyebrow">STRESS FREE</span>
+        <h1>捏一下，<br>气就消了一半</h1>
+        <p>慢回弹捏捏第二件半价，加班、考试、开会前，都值得捏一捏。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#flash">抢秒杀价</a>
+          <a class="btn btn-line" href="#products">看看捏捏</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="hero-slide">
+      <img src="商品图片/a93d75b87fe1b2ab73c5c8956eca1ee2.jpg" alt="笑脸奶黄抱枕">
+      <div class="hero-copy">
+        <span class="eyebrow">SWEET DREAM</span>
+        <h1>午睡时长<br>由抱枕决定</h1>
+        <p>毛绒抱枕填满整个怀抱，办公室小憩也能睡出周末感。满 99 减 20。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#products">立即选购</a>
+          <a class="btn btn-line" href="#promo">领优惠券</a>
+        </div>
+      </div>
+    </article>
+
+    <div class="hero-ctrl">
+      <div class="dots" id="dots" aria-label="轮播指示器"></div>
+      <div class="arrows">
+        <button class="arrow" id="prevBtn" aria-label="上一张">←</button>
+        <button class="arrow" id="nextBtn" aria-label="下一张">→</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="promo-stack">
+    <div class="promo-card is-butter">
+      <b>新客礼包</b>
+      <p>注册即领 20 元无门槛券</p>
+      <a class="link" href="#promo">立即领取 →</a>
+    </div>
+    <div class="promo-card is-mint">
+      <b>全场包邮</b>
+      <p>满 99 元包邮，偏远地区除外</p>
+      <a class="link" href="#products">去凑单 →</a>
+    </div>
+    <a class="promo-card is-photo" href="detail.html?id=p6" aria-label="前往等身抱枕商品页">
+      <img src="商品图片/等身抱枕_马步奶蛙.png" alt="等身抱枕">
+      <div class="inner">
+        <b>大大一个拥抱</b>
+        <span class="link" style="margin-top:6px">等身抱枕专区 →</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- =================【可修改】频道入口 ================= -->
+<div class="container">
+  <div class="channel-grid">
+    <a class="channel" href="#products"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l3 6 6 .9-4.4 4.3 1 6.1L12 17.6 6.4 20.3l1-6.1L3 9.9l6-.9z"></path></svg></span>新品首发</a>
+    <a class="channel" href="#flash"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 3L5 14h6l-1 7 8-11h-6z"></path></svg></span>限时秒杀</a>
+    <a class="channel" href="#rank"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 20V10M12 20V4M19 20v-7"></path></svg></span>爆款榜单</a>
+    <a class="channel" href="#promo"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="8" width="18" height="9" rx="2"></rect><path d="M12 8v9"></path></svg></span>新人礼包</a>
+    <a class="channel" href="#story"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3.2"></circle><path d="M5 20a7 7 0 0 1 14 0"></path></svg></span>会员中心</a>
+    <a class="channel" href="#products"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="3"></rect><path d="M9 9h6v6H9z"></path></svg></span>抱枕专区</a>
+    <a class="channel" href="#service"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"></path></svg></span>售后无忧</a>
+    <a class="channel" href="#contact"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 13a8 8 0 0 1 16 0v4a2 2 0 0 1-2 2h-3"></path><circle cx="7" cy="15" r="2"></circle></svg></span>联系客服</a>
+  </div>
+</div>
+
+<!-- =================【可修改】限时秒杀 ================= -->
+<section class="container section" id="flash">
+  <div class="panel">
+    <div class="flash-head">
+      <div class="flash-title"><span class="flame">秒</span>限时秒杀</div>
+      <div class="countdown">距结束
+        <b id="cdHour">02</b>:<b id="cdMin">00</b>:<b id="cdSec">00</b>
+      </div>
+      <div class="flash-more"><a href="#products">更多秒杀 ›</a></div>
+    </div>
+    <div class="flash-list" id="flashList"><!-- 由 JS 渲染 --></div>
+  </div>
+</section>
+
+<!-- =================【可修改】领券中心 ================= -->
+<section class="container" id="promo">
+  <div class="coupon-row">
+    <div class="coupon">
+      <div class="val"><small>¥</small><b>5</b></div>
+      <div class="meta"><strong>满 59 元可用</strong><span>全店通用 · 3 天有效</span></div>
+      <button data-coupon="5">领取</button>
+    </div>
+    <div class="coupon">
+      <div class="val"><small>¥</small><b>20</b></div>
+      <div class="meta"><strong>满 99 元可用</strong><span>新客专享 · 7 天有效</span></div>
+      <button data-coupon="20">领取</button>
+    </div>
+    <div class="coupon">
+      <div class="val"><small>¥</small><b>50</b></div>
+      <div class="meta"><strong>满 199 元可用</strong><span>大件专用 · 15 天有效</span></div>
+      <button data-coupon="50">领取</button>
+    </div>
+    <a class="coupon-more" href="#products"><b>领券中心 ›</b><span>更多优惠等你拿</span></a>
+  </div>
+</section>
+
+<!-- =================【可修改】商品展示区 ================= -->
+<section class="container section" id="products">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">ALL PRODUCTS</span>
+      <h2 class="section-title">今天的小治愈<small id="productCount">共 11 件</small></h2>
+    </div>
+    <div class="tabs" role="tablist" aria-label="排序方式">
+      <button class="tab is-active" data-sort="default">综合推荐</button>
+      <button class="tab" data-sort="sales">销量优先</button>
+      <button class="tab" data-sort="price">价格从低到高</button>
+      <button class="tab" data-sort="new">新品上架</button>
+    </div>
+  </div>
+  <div class="product-grid" id="productGrid"><!-- 由 JS 渲染 --></div>
+</section>
+
+<!-- =================【可修改】排行榜 ================= -->
+<section class="container section" id="rank">
+  <div class="rank-grid">
+    <div class="rank-panel">
+      <div class="rank-head"><h3>本周热销榜</h3><span>每 24 小时更新</span></div>
+      <div id="hotRank"></div>
+    </div>
+    <div class="rank-panel">
+      <div class="rank-head"><h3>新品人气榜</h3><span>上新 7 天内</span></div>
+      <div id="newRank"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================【可修改】品牌故事 ================= -->
+<section class="container section" id="story">
+  <div class="story-grid">
+    <div class="story-media">
+      <img src="商品图片/067d0ff8ed69882eb5e146744168271b.jpg" alt="抱肚大笑蛙">
+    </div>
+    <div class="story-copy">
+      <span class="eyebrow">OUR STORY</span>
+      <h2>我们想做一间<br>可以摸的杂货铺</h2>
+      <p>一口奶蛙开始于三个喜欢软东西的人：下班后想捏点什么、难过时想抱点什么、发呆时想看点什么。</p>
+      <p>于是我们把这些小情绪做成了吧唧、捏捏、手办和抱枕。每一只都经过手工挑毛、填棉、缝合，软是唯一的硬标准。</p>
+      <div class="stats">
+        <div class="stat"><strong>3,200+</strong><span>只软物已寄出</span></div>
+        <div class="stat"><strong>98%</strong><span>买家说好软</span></div>
+        <div class="stat"><strong>4</strong><span>个原创系列</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================【可修改】服务保障 ================= -->
+<section class="container" id="service">
+  <div class="service-bar">
+    <div class="service">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
+      <div><strong>正品保障</strong><small>原创设计，假一赔十</small></div>
+    </div>
+    <div class="service">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"></path><circle cx="7" cy="17" r="1.6"></circle><circle cx="18" cy="17" r="1.6"></circle></svg></span>
+      <div><strong>48 小时发货</strong><small>现货当日出库</small></div>
+    </div>
+    <div class="service">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12a8 8 0 1 0 3-6.2"></path><path d="M4 4v4h4"></path></svg></span>
+      <div><strong>7 天无理由</strong><small>不喜欢就退，运费我们出</small></div>
+    </div>
+    <div class="service">
+      <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"></circle><path d="M8 12l3 3 5-6"></path></svg></span>
+      <div><strong>破损包赔</strong><small>签收 24 小时内可申请</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================【可修改】帮助中心 ================= -->
+<section class="container section" id="faq">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">HELP CENTER</span>
+      <h2 class="section-title">常见问题<small>下单前看一眼</small></h2>
+    </div>
+  </div>
+  <div class="faq-grid">
+    <details id="faq-flow" open>
+      <summary>购物流程</summary>
+      <p>挑选商品 → 加入购物车 → 点"去结算"确认订单 → 选择支付方式提交 → 48 小时内发货。</p>
+    </details>
+    <details id="faq-member">
+      <summary>会员介绍</summary>
+      <p>注册登录即成为奶蛙会员：新客立减 20 元，会员享生日礼包、优先购与积分兑换。</p>
+    </details>
+    <details id="faq-ship">
+      <summary>包邮政策 · 配送范围 · 物流查询</summary>
+      <p>全场满 99 元包邮（偏远地区补运费）；默认发中通 / 顺丰，全国大部分地区 3–5 天送达。</p>
+    </details>
+    <details id="faq-return">
+      <summary>退换货 · 退款 · 破损包赔</summary>
+      <p>签收 7 天内、商品未拆封可无理由退换；退款 1–3 个工作日原路返回。签收 24 小时内发现破损，拍照联系客服直接补发。</p>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<!-- =================【可修改】页脚 ================= -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="images/logo.jpg" alt="一口奶蛙 LOGO">
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">一口奶蛙</span>
+            <span class="brand-sub">CUSTARD GOODS</span>
+          </span>
+        </div>
+        <p>吧唧 · 捏捏 · 手办 · 抱枕 · 小夜灯<br>一间只卖柔软和解压的小店。<br>客服微信：custard_shop<br>电话：400-000-0000</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="微信"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 11a5 5 0 0 1 5-5h2a5 5 0 0 1 0 10H9l-3 2v-2.4A5 5 0 0 1 4 11Z"></path><circle cx="9" cy="10.5" r=".9"></circle><circle cx="13" cy="10.5" r=".9"></circle></svg></a>
+          <a href="#" aria-label="小红书"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="4" y="5" width="16" height="15" rx="4"></rect><path d="M8 9v6M8 9l3 3 3-3v6"></path></svg></a>
+          <a href="#" aria-label="微博"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><circle cx="11" cy="14" r="4.5"></circle><path d="M17 6.5a4 4 0 0 1 3 3"></path></svg></a>
+          <a href="#" aria-label="抖音"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M14 4v9.5a3.5 3.5 0 1 1-3.5-3.5"></path><path d="M14 4c.5 2.5 2 4 4.5 4.3"></path></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>购物指南</h4>
+        <a href="#faq-flow">购物流程</a>
+        <a href="#faq-member">会员介绍</a>
+        <a href="#promo">优惠券使用</a>
+        <a href="#faq">常见问题</a>
+      </div>
+      <div class="footer-col">
+        <h4>配送方式</h4>
+        <a href="#faq-ship">包邮政策</a>
+        <a href="#faq-ship">配送范围</a>
+        <a href="#faq-ship">物流查询</a>
+        <span>工作日 10:00–21:00</span>
+      </div>
+      <div class="footer-col">
+        <h4>售后服务</h4>
+        <a href="#faq-return">退换货政策</a>
+        <a href="#faq-return">退款说明</a>
+        <a href="#faq-return">破损包赔</a>
+        <a href="#contact">联系客服</a>
+      </div>
+      <div class="footer-col">
+        <h4>关于我们</h4>
+        <a href="#story">品牌故事</a>
+        <a href="#contact">加入我们</a>
+        <a href="#contact">联系我们</a>
+        <span>地址：广州市天河区五奶蛙路 18 号</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 一口奶蛙 · 治愈杂货铺 保留所有权利 · 本站为教学实训作品</span>
+      <div class="pay"><span>支付宝</span><span>微信支付</span><span>银联</span></div>
+    </div>
+  </div>
+</footer>
+
+<!-- 悬浮工具 -->
+<aside class="float-tools">
+  <a class="tool" href="#contact" aria-label="联系客服">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 13a8 8 0 0 1 16 0v4a2 2 0 0 1-2 2h-3"></path><circle cx="7" cy="15" r="2"></circle></svg>
+    <span class="tip">联系客服</span>
+  </a>
+  <button class="tool" id="floatCart" aria-label="打开购物车">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h2l2.4 10.2a2 2 0 0 0 2 1.6h7.4a2 2 0 0 0 2-1.6L21 9H7"></path><circle cx="10" cy="20.5" r="1.2"></circle><circle cx="18" cy="20.5" r="1.2"></circle></svg>
+    <span class="cart-badge" id="floatBadge" hidden>0</span>
+    <span class="tip">购物车</span>
+  </button>
+  <button class="tool" id="topBtn" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 19V5M6 11l6-6 6 6"></path></svg>
+    <span class="tip">回到顶部</span>
+  </button>
+</aside>
+
+<!-- 迷你购物车 -->
+<aside class="mini-cart" id="miniCart" aria-label="购物车内容">
+  <h4>购物车</h4>
+  <div class="cart-list" id="cartList"></div>
+  <div class="cart-total"><span>合计</span><strong id="cartTotal">¥0.00</strong></div>
+  <div class="cart-actions"><button class="btn btn-sale" id="checkoutBtn">去结算</button></div>
+</aside>
+
+<!-- 确认订单弹层 -->
+<div class="modal" id="orderModal" aria-hidden="true">
+  <div class="modal-mask" data-close></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-label="确认订单">
+    <button class="modal-close" data-close aria-label="关闭">×</button>
+    <div id="orderStep">
+      <h3>确认订单</h3>
+      <div class="addr">收货人：奶蛙同学　138****0000<br>地址：广州市天河区五奶蛙路 18 号</div>
+      <div class="order-items" id="orderItems"></div>
+      <div class="order-sum"><span>合计（含运费 ¥0）</span><strong id="orderTotal">¥0.00</strong></div>
+      <div class="pay-way">
+        <label><input type="radio" name="pay" value="支付宝" checked>支付宝</label>
+        <label><input type="radio" name="pay" value="微信支付">微信支付</label>
+        <label><input type="radio" name="pay" value="银联">银联</label>
+      </div>
+      <button class="btn btn-sale" id="submitOrder" style="width:100%;margin-top:14px">提交订单</button>
+    </div>
+    <div id="successStep" hidden style="text-align:center">
+      <div class="ok-icon">✓</div>
+      <h3 style="text-align:center">下单成功</h3>
+      <p class="modal-tip" style="text-align:center">订单号：<strong id="orderNo">CD20260001</strong><br>我们会在 48 小时内发货，可凭订单号联系客服查询。</p>
+      <button class="btn btn-primary" data-close style="width:100%;margin-top:8px">继续逛逛</button>
+    </div>
+  </div>
+</div>
+
+<!-- 登录 / 注册弹层 -->
+<div class="modal" id="loginModal" aria-hidden="true">
+  <div class="modal-mask" data-close></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-label="登录注册">
+    <button class="modal-close" data-close aria-label="关闭">×</button>
+    <h3>登录 / 注册</h3>
+    <p class="modal-tip">演示版：输入任意 11 位手机号即可登录，无需真实验证码。</p>
+    <input class="modal-input" id="loginPhone" inputmode="numeric" maxlength="11" placeholder="请输入手机号">
+    <button class="btn btn-primary" id="loginSubmit" style="width:100%">登录</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="products.js"></script>
+<script>
+const byId = function(id){ return PRODUCTS.find(function(p){ return p.id === id; }); };
+const fmt = function(n){ return n.toFixed(2); };
+
+/* ---------- 商品渲染（全部 11 件） ---------- */
+const grid = document.getElementById('productGrid');
+const countEl = document.getElementById('productCount');
+
+function productView(p){
+  return `
+    <article class="product-card">
+      <a class="product-media" href="${p.link}" aria-label="${p.name}">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        ${p.tag ? `<span class="product-tag ${p.tag === '热卖' || p.tag === '限量' ? 'is-sale' : ''}">${p.tag}</span>` : ''}
+      </a>
+      <div class="product-body">
+        <h3><a href="${p.link}">${p.name}</a></h3>
+        <p class="product-desc">${p.desc}</p>
+        <div class="chips">
+          <span class="chip">券后立减</span>
+          <span class="chip gray">48h 发货</span>
+        </div>
+        <div class="product-foot">
+          <div class="price"><small>¥</small><b>${p.price}</b><del>¥${p.orig}</del></div>
+          <span class="sales">已售 ${(p.sales / 10000) >= 1 ? (p.sales / 10000).toFixed(1) + '万' : p.sales}</span>
+        </div>
+        <div class="product-foot">
+          <span class="sales">${p.rate} 分 · 好评率 98%</span>
+          <button class="add-btn" data-add="${p.id}">加入购物车</button>
+        </div>
+      </div>
+    </article>`;
+}
+
+function renderProducts(list){
+  countEl.textContent = '共 ' + list.length + ' 件';
+  grid.innerHTML = list.length
+    ? list.map(productView).join('')
+    : '<p class="empty">没有找到相关软物，换个关键词试试～</p>';
+}
+
+function sortProducts(mode){
+  const list = PRODUCTS.slice();
+  if(mode === 'sales') list.sort(function(a,b){ return b.sales - a.sales; });
+  if(mode === 'price') list.sort(function(a,b){ return a.price - b.price; });
+  if(mode === 'new') list.sort(function(a,b){ return b.id.localeCompare(a.id); });
+  return list;
+}
+
+renderProducts(PRODUCTS);
+
+/* ---------- 秒杀渲染 + 倒计时 ---------- */
+const flashList = document.getElementById('flashList');
+flashList.innerHTML = FLASH.map(function(f){
+  const p = byId(f.id);
+  return `
+    <div class="flash-item">
+      <img src="${p.img}" alt="${p.name}">
+      <div class="flash-info">
+        <h4>${p.name}</h4>
+        <div class="flash-price">
+          <span class="now"><small>¥</small>${f.flashPrice}</span>
+          <span class="old">¥${p.orig}</span>
+        </div>
+        <div class="bar"><i style="width:${f.progress}%"></i><span>已抢 ${f.progress}%</span></div>
+        <button class="add-btn" data-flash="${p.id}" style="align-self:flex-start;margin-top:2px">马上抢</button>
+      </div>
+    </div>`;
+}).join('');
+
+let left = 2 * 3600;
+function tick(){
+  left = left > 0 ? left - 1 : 2 * 3600;
+  const h = Math.floor(left / 3600), m = Math.floor(left % 3600 / 60), s = left % 60;
+  document.getElementById('cdHour').textContent = String(h).padStart(2, '0');
+  document.getElementById('cdMin').textContent = String(m).padStart(2, '0');
+  document.getElementById('cdSec').textContent = String(s).padStart(2, '0');
+}
+tick();
+setInterval(tick, 1000);
+
+/* ---------- 排行榜 ---------- */
+function renderRank(box, ids){
+  box.innerHTML = ids.map(function(id, i){
+    const p = byId(id);
+    return `
+      <a class="rank-item" href="${p.link}">
+        <span class="rank-no">${i + 1}</span>
+        <img src="${p.img}" alt="${p.name}">
+        <span class="rank-name"><strong>${p.name}</strong><small>已售 ${(p.sales / 10000) >= 1 ? (p.sales / 10000).toFixed(1) + '万' : p.sales} 件</small></span>
+        <span class="rank-price">¥${p.price}</span>
+      </a>`;
+  }).join('');
+}
+renderRank(document.getElementById('hotRank'), ['p1','p5','p2','p4','p3']);
+renderRank(document.getElementById('newRank'), ['p7','p11','p6','p10','p8']);
+
+/* ---------- 购物车 ---------- */
+const CART = {};
+const CART_PRICE = {};
+const badge = document.getElementById('cartBadge');
+const floatBadge = document.getElementById('floatBadge');
+const preview = document.getElementById('cartPreview');
+const miniCart = document.getElementById('miniCart');
+const cartList = document.getElementById('cartList');
+const cartTotal = document.getElementById('cartTotal');
+
+const CART_KEY = 'custard_cart';
+function saveCart(){
+  try{ localStorage.setItem(CART_KEY, JSON.stringify({ items: CART, prices: CART_PRICE })); }catch(e){}
+}
+function loadCart(){
+  try{
+    const d = JSON.parse(localStorage.getItem(CART_KEY) || '{}');
+    Object.assign(CART, d.items || {});
+    Object.assign(CART_PRICE, d.prices || {});
+  }catch(e){}
+}
+
+function cartIds(){ return Object.keys(CART); }
+function cartCount(){ return cartIds().reduce(function(s,id){ return s + CART[id]; }, 0); }
+function priceOf(id){ return CART_PRICE[id] || byId(id).price; }
+function cartSum(){ return cartIds().reduce(function(s,id){ return s + priceOf(id) * CART[id]; }, 0); }
+
+function updateCart(){
+  const count = cartCount(), sum = cartSum();
+  badge.textContent = count; badge.hidden = count === 0;
+  floatBadge.textContent = count; floatBadge.hidden = count === 0;
+  preview.textContent = '¥' + fmt(sum);
+  cartTotal.textContent = '¥' + fmt(sum);
+
+  cartList.innerHTML = cartIds().length ? cartIds().map(function(id){
+    const p = byId(id);
+    return `<div class="cart-item">
+      <div><strong>${p.name}</strong><small>¥${priceOf(id)} × ${CART[id]}</small></div>
+      <button class="cart-remove" data-del="${id}" aria-label="移除 ${p.name}">×</button>
+    </div>`;
+  }).join('') : '<p class="cart-empty">购物车还空着，先挑一只软的吧。</p>';
+  saveCart();
+}
+
+function addToCart(id, flashPrice){
+  CART[id] = (CART[id] || 0) + 1;
+  if(flashPrice) CART_PRICE[id] = flashPrice;
+  const p = byId(id);
+  updateCart();
+  showToast(p.name + ' 已加入购物车' + (flashPrice ? '（秒杀价 ¥' + flashPrice + '）' : ''));
+  openCart(true);
+}
+loadCart();
+updateCart();
+
+/* ---------- 轻提示 ---------- */
+let toastTimer = null;
+function showToast(msg){
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('is-show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ el.classList.remove('is-show'); }, 2200);
+}
+
+/* ---------- 点击事件委托 ---------- */
+document.addEventListener('click', function(e){
+  const add = e.target.closest('[data-add]');
+  if(add){ addToCart(add.dataset.add); return; }
+
+  const flash = e.target.closest('[data-flash]');
+  if(flash){
+    const f = FLASH.find(function(x){ return x.id === flash.dataset.flash; });
+    addToCart(flash.dataset.flash, f ? f.flashPrice : '');
+    return;
+  }
+
+  const del = e.target.closest('[data-del]');
+  if(del){ delete CART[del.dataset.del]; updateCart(); return; }
+
+  const coupon = e.target.closest('[data-coupon]');
+  if(coupon){ showToast('已领取 ¥' + coupon.dataset.coupon + ' 优惠券，结算时自动抵扣'); return; }
+
+  const social = e.target.closest('[data-social]');
+  if(social){ e.preventDefault(); showToast('已复制' + social.dataset.social + '：一口奶蛙'); return; }
+
+  const placeholder = e.target.closest('a[href="#"]');
+  if(placeholder){ e.preventDefault(); showToast('该链接还在制作中'); }
+});
+
+/* ---------- 迷你购物车开合 ---------- */
+function openCart(open){
+  miniCart.classList.toggle('is-open', open);
+  document.getElementById('cartBtn').setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+document.getElementById('cartBtn').addEventListener('click', function(e){ e.stopPropagation(); openCart(!miniCart.classList.contains('is-open')); });
+document.getElementById('floatCart').addEventListener('click', function(e){ e.stopPropagation(); openCart(!miniCart.classList.contains('is-open')); });
+document.addEventListener('click', function(e){
+  if(!miniCart.contains(e.target) && !e.target.closest('#cartBtn') && !e.target.closest('#floatCart')) openCart(false);
+});
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') openCart(false); });
+
+/* ---------- 弹层通用开合 ---------- */
+const orderModal = document.getElementById('orderModal');
+const loginModal = document.getElementById('loginModal');
+
+function openModal(el){ el.classList.add('is-open'); el.setAttribute('aria-hidden', 'false'); }
+function closeModal(el){ el.classList.remove('is-open'); el.setAttribute('aria-hidden', 'true'); }
+
+document.querySelectorAll('[data-close]').forEach(function(btn){
+  btn.addEventListener('click', function(){ closeModal(btn.closest('.modal')); });
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){
+    closeModal(orderModal);
+    closeModal(loginModal);
+  }
+});
+
+/* ---------- 确认订单 → 下单成功 ---------- */
+document.getElementById('checkoutBtn').addEventListener('click', function(){
+  if(!cartIds().length){ showToast('购物车是空的，先挑一件吧'); return; }
+
+  document.getElementById('orderItems').innerHTML = cartIds().map(function(id){
+    return '<div><span>' + byId(id).name + ' × ' + CART[id] + '</span><span>¥' + fmt(priceOf(id) * CART[id]) + '</span></div>';
+  }).join('');
+  document.getElementById('orderTotal').textContent = '¥' + fmt(cartSum());
+  document.getElementById('orderStep').hidden = false;
+  document.getElementById('successStep').hidden = true;
+
+  openCart(false);
+  openModal(orderModal);
+});
+
+document.getElementById('submitOrder').addEventListener('click', function(){
+  const pay = document.querySelector('input[name="pay"]:checked').value;
+  document.getElementById('orderNo').textContent =
+    'CD' + new Date().getFullYear() + String(Math.floor(Math.random() * 9000) + 1000);
+  document.getElementById('orderStep').hidden = true;
+  document.getElementById('successStep').hidden = false;
+  showToast('已使用' + pay + '支付');
+});
+
+/* ---------- 登录 / 注册 ---------- */
+document.getElementById('loginBtn').addEventListener('click', function(e){
+  e.preventDefault();
+  document.getElementById('loginPhone').value = '';
+  openModal(loginModal);
+});
+document.getElementById('registerBtn').addEventListener('click', function(){
+  document.getElementById('loginPhone').value = '';
+  openModal(loginModal);
+});
+document.getElementById('loginSubmit').addEventListener('click', function(){
+  const phone = document.getElementById('loginPhone').value.trim();
+  if(!/^1\d{10}$/.test(phone)){ showToast('请输入 11 位手机号'); return; }
+
+  closeModal(loginModal);
+  const loginBtn = document.getElementById('loginBtn');
+  loginBtn.textContent = '奶蛙会员 · ' + phone.slice(-4);
+  loginBtn.href = '#contact';
+  document.getElementById('registerBtn').hidden = true;
+  showToast('登录成功，欢迎回来');
+});
+
+/* ---------- 商品分类下拉 ---------- */
+const catWrap = document.getElementById('catWrap');
+document.getElementById('catBtn').addEventListener('click', function(e){
+  e.stopPropagation();
+  const open = catWrap.classList.toggle('is-open');
+  this.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+document.addEventListener('click', function(e){
+  if(!catWrap.contains(e.target)){
+    catWrap.classList.remove('is-open');
+    document.getElementById('catBtn').setAttribute('aria-expanded', 'false');
+  }
+});
+document.getElementById('catDrop').addEventListener('click', function(){
+  catWrap.classList.remove('is-open');
+  document.getElementById('catBtn').setAttribute('aria-expanded', 'false');
+});
+
+/* ---------- 从页脚跳到 FAQ 时自动展开 ---------- */
+function openFaqByHash(){
+  if(!location.hash) return;
+  const el = document.querySelector(location.hash);
+  if(el && el.tagName === 'DETAILS') el.open = true;
+}
+window.addEventListener('hashchange', openFaqByHash);
+openFaqByHash();
+
+/* ---------- 轮播 ---------- */
+const slides = Array.from(document.querySelectorAll('.hero-slide'));
+const dotsBox = document.getElementById('dots');
+let index = 0, timer = null;
+
+dotsBox.innerHTML = slides.map(function(_, i){
+  return `<button class="dot${i === 0 ? ' is-active' : ''}" data-slide="${i}" aria-label="第 ${i + 1} 张"></button>`;
+}).join('');
+const dotEls = Array.from(dotsBox.children);
+
+function showSlide(i){
+  index = (i + slides.length) % slides.length;
+  slides.forEach(function(s, n){ s.classList.toggle('is-active', n === index); });
+  dotEls.forEach(function(d, n){ d.classList.toggle('is-active', n === index); });
+}
+function startAuto(){ clearInterval(timer); timer = setInterval(function(){ showSlide(index + 1); }, 5200); }
+function stopAuto(){ clearInterval(timer); }
+
+dotsBox.addEventListener('click', function(e){
+  const d = e.target.closest('[data-slide]');
+  if(!d) return;
+  showSlide(Number(d.dataset.slide)); startAuto();
+});
+document.getElementById('prevBtn').addEventListener('click', function(){ showSlide(index - 1); startAuto(); });
+document.getElementById('nextBtn').addEventListener('click', function(){ showSlide(index + 1); startAuto(); });
+const frame = document.getElementById('heroFrame');
+frame.addEventListener('mouseenter', stopAuto);
+frame.addEventListener('mouseleave', startAuto);
+startAuto();
+
+/* ---------- 搜索 + 排序 ---------- */
+let sortMode = 'default';
+let keyword = '';
+
+function applyFilter(){
+  let list = sortProducts(sortMode);
+  if(keyword){
+    list = list.filter(function(p){
+      return (p.name + p.desc + p.tag).toLowerCase().indexOf(keyword) > -1;
+    });
+  }
+  renderProducts(list);
+}
+
+document.getElementById('searchForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  keyword = document.getElementById('searchInput').value.trim().toLowerCase();
+  applyFilter();
+  document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+});
+document.getElementById('searchInput').addEventListener('input', function(e){
+  keyword = e.target.value.trim().toLowerCase();
+  applyFilter();
+});
+document.querySelectorAll('.tab').forEach(function(tab){
+  tab.addEventListener('click', function(){
+    document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('is-active'); });
+    tab.classList.add('is-active');
+    sortMode = tab.dataset.sort;
+    applyFilter();
+  });
+});
+
+/* ---------- 移动端菜单 ---------- */
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+menuBtn.addEventListener('click', function(){
+  const open = navLinks.classList.toggle('is-open');
+  menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+navLinks.addEventListener('click', function(e){
+  if(e.target.tagName === 'A'){
+    navLinks.classList.remove('is-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }
+});
+
+/* ---------- 回到顶部 ---------- */
+document.getElementById('topBtn').addEventListener('click', function(){
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ---------- 滚动入场动效 ---------- */
+const observer = new IntersectionObserver(function(entries){
+  entries.forEach(function(entry){
+    if(entry.isIntersecting){
+      entry.target.classList.add('is-in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: .1 });
+
+document.querySelectorAll('.section-head, .product-card, .flash-item, .rank-panel, .story-grid, .channel-grid, .coupon').forEach(function(el, i){
+  el.classList.add('reveal');
+  el.style.transitionDelay = (i % 6) * 50 + 'ms';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
